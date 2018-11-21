@@ -1,11 +1,8 @@
 class Restaurant < ApplicationRecord
-
-  # associations
   has_many :reviews, dependent: :destroy
 
-  # validations
-  # A restaurant must have at least a name and an address.
   validates :name, presence: true
   validates :address, presence: true
-
+  validates :phone_number, presence: true
+  validates :category, inclusion: { in: ["chinese", "italian", "japanese", "french", "belgian"] }
 end
